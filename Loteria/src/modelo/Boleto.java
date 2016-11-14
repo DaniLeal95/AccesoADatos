@@ -1,5 +1,6 @@
 package modelo;
 
+import java.sql.Date;
 import java.util.GregorianCalendar;
 
 public class Boleto {
@@ -16,13 +17,13 @@ public class Boleto {
 	
 	private int id_boleto;
 	private int id_sorteo;
-	private GregorianCalendar fecha_compra;
+	private Date fecha_compra;
 	private short reintegro;
 	private short numeros_jugados;
 	private double Premio;
 	
 	//Constructores
-	public Boleto(int id_boleto, int id_sorteo, GregorianCalendar fecha_compra, short reintegro, short numeros_jugados,
+	public Boleto(int id_boleto, int id_sorteo, Date fecha_compra, short reintegro, short numeros_jugados,
 			double premio) {
 		
 		this.id_boleto = id_boleto;
@@ -59,12 +60,12 @@ public class Boleto {
 		this.id_sorteo = id_sorteo;
 	}
 
-	public GregorianCalendar getFecha_compra() {
+	public Date getFecha_compra() {
 		return fecha_compra;
 	}
 
-	public void setFecha_compra(GregorianCalendar fecha_compra) {
-		this.fecha_compra = fecha_compra;
+	public void setFecha_compra(Date date) {
+		this.fecha_compra = date;
 	}
 
 	public short getReintegro() {

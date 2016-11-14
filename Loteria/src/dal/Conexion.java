@@ -14,12 +14,13 @@ public class Conexion {
 	//Constructores
 	public Conexion (){
 		this.url="jdbc:sqlserver://localhost";
-		this.usuario="user";
-		this.password="pass";
-		this.iniConexion();
+		this.usuario="userLoteria";
+		this.password="passw";
+		
 	}
 	
 	public Conexion (String url,String usuario, String password){
+		super();
 		this.url=url;
 		this.usuario=usuario;
 		this.password=password;
@@ -55,6 +56,13 @@ public class Conexion {
 		this.password = password;
 	}
 	
+	public Connection getConexion(){
+		return this.conexion;
+	}
+	public void setConexion(Connection conexion){
+		this.conexion=conexion;
+	}
+	
 	
 	
 	//Metodos
@@ -81,6 +89,16 @@ public class Conexion {
 		try {
 			this.conexion=DriverManager.getConnection(url, usuario, password);
 		} catch (SQLException e) {
-			System.out.println("No se ha iniciado la conexion");		}
+			System.out.println("Error de la conexion");		}
 	}
+	
+	//Cerrar Conexion
+	public void closeConexion(){
+		try {
+			this.conexion.close();
+		}catch(SQLException sqle){
+			System.out.println(sqle);
+		}
+	}
+	
 }
