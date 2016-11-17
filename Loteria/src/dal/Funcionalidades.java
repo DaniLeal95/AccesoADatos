@@ -75,12 +75,7 @@ public class Funcionalidades {
 		
 		String insertSorteo = "Insert into Sorteos ("+Columnas.fecha_Sorteo+","+Columnas.reintegro_Sorteo+","+Columnas.complementario_Sorteo+") values ("+fechaDeSorteo+","+reintegro+","+complementario+")";
 		String selectBoleto = "Select top 1 "+Columnas.idSorteo_NumSorteo+ " from Sorteos order by "+Columnas.idSorteo_NumSorteo+" desc";
-		String insertNumerosSorteos1 = "Insert into NumerosSorteos ("+Columnas.idSorteo_NumSorteo+","+Columnas.numero_NumSorteo+") values ("+idSorteo+","+numero1+")";
-		String insertNumerosSorteos2 = "Insert into NumerosSorteos ("+Columnas.idSorteo_NumSorteo+","+Columnas.numero_NumSorteo+") values ("+idSorteo+","+numero2+")";
-		String insertNumerosSorteos3 = "Insert into NumerosSorteos ("+Columnas.idSorteo_NumSorteo+","+Columnas.numero_NumSorteo+") values ("+idSorteo+","+numero3+")";
-		String insertNumerosSorteos4 = "Insert into NumerosSorteos ("+Columnas.idSorteo_NumSorteo+","+Columnas.numero_NumSorteo+") values ("+idSorteo+","+numero4+")";
-		String insertNumerosSorteos5 = "Insert into NumerosSorteos ("+Columnas.idSorteo_NumSorteo+","+Columnas.numero_NumSorteo+") values ("+idSorteo+","+numero5+")";
-		String insertNumerosSorteos6 = "Insert into NumerosSorteos ("+Columnas.idSorteo_NumSorteo+","+Columnas.numero_NumSorteo+") values ("+idSorteo+","+numero6+")";
+
 		
 		
 		try{
@@ -89,16 +84,23 @@ public class Funcionalidades {
 			if(sentencia.executeUpdate(insertSorteo)>0){
 				resultado=sentencia.executeQuery(selectBoleto);
 				
-				idSorteo= resultado.getShort(Columnas.idSorteo_NumSorteo);
-				
-				if(idSorteo!=-1){
-					sentencia.executeUpdate(insertNumerosSorteos1);
-					sentencia.executeUpdate(insertNumerosSorteos2);
-					sentencia.executeUpdate(insertNumerosSorteos3);
-					sentencia.executeUpdate(insertNumerosSorteos4);
-					sentencia.executeUpdate(insertNumerosSorteos5);
-					sentencia.executeUpdate(insertNumerosSorteos6);
+				if(resultado.next()){
+					idSorteo= resultado.getShort(Columnas.idSorteo_NumSorteo);
 					
+					if(idSorteo!=-1){
+						String insertNumerosSorteos1 = "Insert into NumerosSorteos ("+Columnas.idSorteo_NumSorteo+","+Columnas.numero_NumSorteo+") values ("+idSorteo+","+numero1+")";
+						String insertNumerosSorteos2 = "Insert into NumerosSorteos ("+Columnas.idSorteo_NumSorteo+","+Columnas.numero_NumSorteo+") values ("+idSorteo+","+numero2+")";
+						String insertNumerosSorteos3 = "Insert into NumerosSorteos ("+Columnas.idSorteo_NumSorteo+","+Columnas.numero_NumSorteo+") values ("+idSorteo+","+numero3+")";
+						String insertNumerosSorteos4 = "Insert into NumerosSorteos ("+Columnas.idSorteo_NumSorteo+","+Columnas.numero_NumSorteo+") values ("+idSorteo+","+numero4+")";
+						String insertNumerosSorteos5 = "Insert into NumerosSorteos ("+Columnas.idSorteo_NumSorteo+","+Columnas.numero_NumSorteo+") values ("+idSorteo+","+numero5+")";
+						String insertNumerosSorteos6 = "Insert into NumerosSorteos ("+Columnas.idSorteo_NumSorteo+","+Columnas.numero_NumSorteo+") values ("+idSorteo+","+numero6+")";
+						sentencia.executeUpdate(insertNumerosSorteos1);
+						sentencia.executeUpdate(insertNumerosSorteos2);
+						sentencia.executeUpdate(insertNumerosSorteos3);
+						sentencia.executeUpdate(insertNumerosSorteos4);
+						sentencia.executeUpdate(insertNumerosSorteos5);
+						sentencia.executeUpdate(insertNumerosSorteos6);
+					}	
 				}else{
 					r=-1;
 				}

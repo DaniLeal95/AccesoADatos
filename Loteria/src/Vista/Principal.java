@@ -38,6 +38,13 @@ public class Principal {
 						System.out.println();
 					}
 				}
+				do{
+					System.out.println("Introduzca Opcion");
+					opcion=sc.nextInt();	
+				
+				}while (opcion<0 || opcion>2);
+			
+				break;
 			case 2:
 				
 				short reintegro,complementario,num1,num2,num3,num4,num5,num6;
@@ -82,7 +89,12 @@ public class Principal {
 			}
 			
 			
-		
+			do{
+				System.out.println("Introduzca Opcion");
+				opcion=sc.nextInt();	
+			
+			}while (opcion<0 || opcion>2);
+		break;
 		}
 	}
 
